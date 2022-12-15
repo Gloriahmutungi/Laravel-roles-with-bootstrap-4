@@ -59,8 +59,8 @@
 	        <ul class="navbar-nav mr-auto">
 	        	<li class="nav-item active"><a href="{{ route('users.index')}}" class="nav-link">Manage Users</a></li>
 	        	<li class="nav-item"><a href="{{ route('roles.index') }}" class="nav-link">Manage Roles</a></li>
-	        	<li class="nav-item"><a href="{{ route('books.index') }}" class="nav-link">Manage Books</a></li>
-				<li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+	        	<li class="nav-item"><a href="{{ route('books.index') }}" class="nav-link">Books</a></li>
+				<li class="nav-item"><a href="#" class="nav-link">User Logs</a></li>
 	         
 			  @if(Auth::check('user'))
 				<li class="nav-item"><a href="#" class="nav-link pull-right">Welcome, {{ Auth::user()->name }}</a></li>

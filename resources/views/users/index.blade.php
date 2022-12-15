@@ -6,7 +6,9 @@
             <h2>Users Management</h2>
         </div>
         <div class="pull-right">
+            @can('role-create')
             <a class="btn btn-dark" href="{{ route('users.create') }}">New User</a>
+            @endcan
         </div>
     </div>
 </div>
@@ -34,21 +36,32 @@
                 <td>{{ ++$key }}</td>
                 <td>{{ $value->name }}</td>
                 <td>{{ $value->email}}</td>
-                <td>{{ $value->role}}</td>
-                <td>
-                
-                    <a class="btn btn-info" href="{{ route('users.show',$value->id) }}">Show</a>
+                <td>@if(!empty($value->getRoleNames()))
+                        @foreach($value->getRoleNames() as $v)
+                        <label class="badge badge-success">{{ $v }}</label>
+                        @endforeach
+                    @endif
+                </td>
+                <td style="display: flex">
+                    <a href="{{ route('users.show',$value->id) }}" title="show" class="btn btn-primary m-2">
+                        <i class="fa fa-eye"></i>
+                    </a>
+
                     @can('role-edit')
-                    <a class="btn btn-dark" href="{{ route('users.edit',$value->id) }}">Edit</a>
+                    <a href="{{ route('users.edit',$value->id) }}" title="edit" class="btn btn-primary m-2">
+                    <i class="fa fa-edit"></i>
+                    </a>
                     @endcan
                     @can('role-delete')
-                    <a class="btn btn-danger" href="{{ route('users.destroy', $value->id) }}">Delete</a>
+                    <form method="POST" action="{{ route('users.destroy',  $value->id) }}">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger m-2" title="delete" type="submit">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </form>
                     @endcan
-                    <!-- <form action="{{ route('users.destroy', $value->id)}}" method="post">
-                    @csrf
-                    @method('DELETE')
-                    <button class="btn btn-danger" title="Delete" type="submit">delete</button>
-                    </form> -->
+                    
                 </td>
             </tr>
             @endforeach

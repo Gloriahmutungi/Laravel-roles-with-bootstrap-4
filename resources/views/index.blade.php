@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
-	<section class="ftco-section">
+	<section>
 		<div class="container">
-			<div class="row justify-content-center">
+			<div class="row">
 				<div class="col-md-6 text-center mb-5">
 					<h2 class="heading-section">Laravel Roles and Permissions</h2>
 				</div>

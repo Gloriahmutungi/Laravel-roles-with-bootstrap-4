@@ -8,6 +8,7 @@ use App\Models\User;
 use Spatie\Permission\Models\Role;
 use DB;
 use Hash;
+use Session;
 use Illuminate\Support\Arr;
 
     
@@ -134,11 +135,11 @@ class UserController extends Controller
         $delete= User::findorfail($id);
         $delete = $delete->delete();
         if($delete){
-           Alert::success('user deleted successfully!');
+            Session::flash('success',"user deleted successfully!");
             return redirect()->route("users.index");
         }
         else{
-            Alert::error('Oops! failed to delete user'); //<--FLASH MESSAGE
+            Session::flash('fail',"Oops! failed to delete user");
             return redirect()->route("users.edit");
     }
 }
