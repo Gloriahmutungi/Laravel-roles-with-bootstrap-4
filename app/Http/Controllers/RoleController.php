@@ -59,7 +59,7 @@ class RoleController extends Controller
             'name' => 'required|unique:roles,name',
             'permission' => 'required',
         ]);
-    
+        
         $role = Role::create(['name' => $request->input('name')]);
         $role->syncPermissions($request->input('permission'));
     
@@ -90,6 +90,7 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
+       
         $role = Role::find($id);
         $permission = Permission::get();
         $rolePermissions = DB::table("role_has_permissions")->where("role_has_permissions.role_id",$id)

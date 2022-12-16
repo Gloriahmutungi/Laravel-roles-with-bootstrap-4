@@ -33,15 +33,20 @@
                 <td>{{ ++$key }}</td>
                 <td>{{ $value->name }}</td>
                 <td>test</td>
-                <td>
-                    <a class="btn btn-info" href="{{ route('users.show',$value->id) }}">Show</a>
-                    <a class="btn btn-dark" href="{{ route('users.edit',$value->id) }}">Edit</a>
-                    <a class="btn btn-danger" href="{{ route('users.destroy', $value->id) }}">Delete</a>
-                    <!-- <form action="{{ route('users.destroy', $value->id)}}" method="post">
-                    @csrf
-                    @method('DELETE')
-                    <button class="btn btn-danger" title="Delete" type="submit">delete</button>
-                    </form> -->
+                <td style="display: flex">
+                <a href="{{ route('roles.edit',$value->id) }}" title="edit" class="btn btn-primary m-2">
+                    <i class="fa fa-eye"></i>
+                </a>
+                    <a href="{{ route('roles.edit',$value->id) }}" title="edit" class="btn btn-primary m-2">
+                         <i class="fa fa-edit"></i>
+                    </a>
+                    <form method="POST" action="{{ route('roles.destroy',  $value->id) }}">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger m-2" title="delete" type="submit">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </form>
                 </td>
             </tr>
             @endforeach

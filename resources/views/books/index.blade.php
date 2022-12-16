@@ -33,17 +33,22 @@
             <tr>
                 <td>{{ ++$key }}</td>
                 <td>{{ $value->name }}</td>
-                <td>{{ $value->email}}</td>
-                <td>{{ $value->role}}</td>
-                <td>
-                    <a class="btn btn-info" href="{{ route('books.show',$value->id) }}">Show</a>
-                    <a class="btn btn-dark" href="{{ route('books.edit',$value->id) }}">Edit</a>
-                    <a class="btn btn-danger" href="{{ route('books.destroy', $value->id) }}">Delete</a>
-                    <!-- <form action="{{ route('users.destroy', $value->id)}}" method="post">
-                    @csrf
-                    @method('DELETE')
-                    <button class="btn btn-danger" title="Delete" type="submit">delete</button>
-                    </form> -->
+                <td>{{ $value->category}}</td>
+                <td>{{ $value->author}}</td>
+                <td style="display: flex">
+                <a href="{{ route('books.show',$value->id) }}" title="show" class="btn btn-primary m-2">
+                    <i class="fa fa-eye"></i>
+                </a>
+                    <a href="{{ route('books.edit',$value->id) }}" title="edit" class="btn btn-primary m-2">
+                         <i class="fa fa-edit"></i>
+                    </a>
+                    <form method="POST" action="{{ route('books.destroy',  $value->id) }}">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger m-2" title="delete" type="submit">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </form>
                 </td>
             </tr>
             @endforeach
