@@ -52,15 +52,15 @@
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
         <select class="form-control" name="role" id="role">
-        @foreach($roles as $role)
-            <option value="{{ $user->name }}" @if ($role->name==$user->id) selected='selected' @endif>
-            {{ $UserRole->name }}
-            </option>
-        @endforeach  
+            @foreach($roles as $role)
+                <option value="{{ $role->id }}" @if ($role->id==$user->role) selected='selected' @endif>
+                {{ $role->name }}
+                </option>
+            @endforeach  
         </select>
-        @if ($errors->has('role'))
-        <span class="text-danger">{{ $errors->first('role') }}</span>
-        @endif
+            @if ($errors->has('role'))
+            <span class="text-danger">{{ $errors->first('role') }}</span>
+            @endif
         <label>Role</label>
         </div>
     </div>
