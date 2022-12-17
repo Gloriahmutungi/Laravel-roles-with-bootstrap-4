@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BooksController;
+use App\Http\Controllers\UserLogController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,6 +24,7 @@ Route::post('post-login', [AuthController::class, 'postlogin'])->name('postlogin
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 Route::post('post-registration', [AuthController::class, 'postregister'])->name('post.register');
 Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('userlogs',[AuthController::class,'userlogs'])->name('userlogs');
 
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', RoleController::class);
